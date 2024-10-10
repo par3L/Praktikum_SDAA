@@ -24,7 +24,7 @@ void dequeueQueue(InventoryNode*& QueueinFirst, InventoryNode*& QueueinLast);
 void peekQueue(InventoryNode* QueueinFirst);
 
 int main() {
-    InventoryNode* head = nullptr; // nunjuk ke head, sekarang null karena kosong
+    InventoryNode* head = nullptr; 
     InventoryNode* stackTop = nullptr;   
     InventoryNode* QueueinFirst = nullptr;   
     InventoryNode* QueueinLast = nullptr;   
@@ -120,8 +120,8 @@ void tambahinventory(InventoryNode*& head, int& jumlahkom, int& idtrack) {
     std::cout << "Masukkan Harga item satuan: ";
     std::cin >> newNode->harga;
 
-    newNode->next = nullptr;  // assign next dari gerbong baru jadi null
-    if (head == nullptr) { // kalo kepala mula-mula null, kepala jadi si gerbong baru
+    newNode->next = nullptr;  
+    if (head == nullptr) { 
         head = newNode;
     } else {
         InventoryNode* temp = head;
@@ -158,7 +158,7 @@ void editinventory(InventoryNode* head, int id_kom) {
     while (temp != nullptr) {
         if (temp->id == id_kom) {
             bool selesai = false;
-            while (!selesai) { // looping menu dan fiturnya sampai selesai
+            while (!selesai) { 
                 int pilihanEdit;
                 std::cout << "1. Nama inventory (Saat ini: " << temp->nama << ")\n";
                 std::cout << "2. Jumlah Stok (Saat ini: " << temp->jumlah << ")\n";
@@ -208,7 +208,7 @@ void dropinventory(InventoryNode*& head, int& jumlahkom, int id_kom) {
             if (prev == nullptr) {
                 head = temp->next;
             } else {
-                prev->next = temp->next; // lewat gerbong
+                prev->next = temp->next; 
             }
             delete temp;
             jumlahkom--;
@@ -225,7 +225,7 @@ void pushStack(InventoryNode*& stackTop, InventoryNode*& head, int id_kom) {
     InventoryNode* temp = head;
     while (temp != nullptr) {
         if (temp->id == id_kom) {
-            InventoryNode* newNode = new InventoryNode(*temp); // struct invent di copy buat terpisah stack
+            InventoryNode* newNode = new InventoryNode(*temp); // stack terpisah
             newNode->next = stackTop;                          // bingung kalau make 1 struct buat invent CRUD trus bisa di stack dan di queue
             stackTop = newNode;
             std::cout << "Item dengan ID: " << newNode->id << " berhasil di-push ke Stack!\n";
@@ -264,7 +264,7 @@ void enqueueQueue(InventoryNode*& QueueinFirst, InventoryNode*& QueueinLast, Inv
     while (temp != nullptr) {
         if (temp->id == id_kom) {
             InventoryNode* newNode = new InventoryNode(*temp); // sama juga
-            newNode->next = nullptr; // no item jadi anggapannya null
+            newNode->next = nullptr; 
 
             if (QueueinLast == nullptr) {
                 QueueinFirst = newNode;
